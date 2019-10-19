@@ -53,11 +53,6 @@
               <%= fa_icon "sign-out" %> Logout
             <% end %>
           </li>
-          <li>
-            <span class="navbar-text">
-              <%= current_user.email %>
-            </span>
-          </li>
         <% else %>
           <li>
             <%= link_to '/signup' do %>
