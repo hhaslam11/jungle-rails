@@ -4,6 +4,13 @@ RSpec.describe Product, type: :model do
   @category = Category.new(name: 'test')
 
   describe 'Validations' do
+
+    xit 'validates when all values are correct' do
+      @product  = Product.new(name: 'name', description: 'test', image: 'test', price_cents: 100, quantity: 100, category: @category)
+      
+      expect(@product).to be_valid
+    end
+
     it 'validates name' do
       @product  = Product.new(description: 'test', image: 'test', price_cents: 100, quantity: 100, category: @category)
       
