@@ -44,5 +44,12 @@ RSpec.describe User, type: :model do
       user2.save
       expect(user2).not_to be_valid
     end
+
+    it 'validates that password has at least 6 characters' do
+      subject.password = '12345'
+      subject.password_confirmation = '12345'
+      expect(subject).not_to be_valid
+    end
+
   end
 end
