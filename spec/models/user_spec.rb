@@ -37,10 +37,12 @@ RSpec.describe User, type: :model do
       expect(subject).not_to be_valid
     end
 
-    xit 'validates if user email is not already in database (case insensitive)' do
+    it 'validates if user email is not already in database (case insensitive)' do
       user1 = User.new(first_name: 'Firstname', last_name: 'Lastname', email: 'testuser@example.com', password: 'Hunter2', password_confirmation: 'Hunter2')
-      user2 = User.new(first_name: 'Firstname', last_name: 'Lastname', email: 'testuser@example.com', password: 'Hunter2', password_confirmation: 'Hunter2')
-      expect(@user2).to be_valid
+      user2 = User.new(first_name: 'Firstname', last_name: 'Lastname', email: 'TESTUSER@example.com', password: 'Hunter2', password_confirmation: 'Hunter2')
+      user1.save
+      user2.save
+      expect(user2).not_to be_valid
     end
   end
 end
