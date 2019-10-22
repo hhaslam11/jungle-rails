@@ -71,5 +71,13 @@ RSpec.describe User, type: :model do
       expect(user).to be_nil
     end
 
+    it 'authenticate a user with correct credentials w/ case insensitive email' do
+      @user = User.new(first_name: 'Firstname', last_name: 'Lastname', email: 'testuser@example.com', password: 'Hunter2', password_confirmation: 'Hunter2')
+      @user.save
+
+      user = User.authenticate_with_credentials('TESTUSER@example.com', 'Hunter2')
+      expect(user).not_to be_nil
+    end
+
   end
 end
